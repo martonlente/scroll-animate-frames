@@ -12,6 +12,7 @@ $(function() {
 
   var $clonedScrollAnimationImg = $safImg.clone();
   var safHelperPlaceholderHeight = $safHelperPlaceholder.height();
+  var topZone = $safHelperPlaceholder.offset().top;
   var endZone = safHelperPlaceholderHeight - $window.height();
 
   for (i = 1; i <= safImgCount; i++) {
@@ -22,23 +23,28 @@ $(function() {
 
   $window.scroll(function() {
     var currentScrollTop = $window.scrollTop();
-    var currentScrollFraction = currentScrollTop / endZone;
-    var $safImgs = $('.saf-img');
-    var safImgIndex = Math.min(
-      safImgCount,
-      Math.round(currentScrollFraction * safImgCount)
-    );
 
-    zIndex++;
+    if ((currentScrollTop) >= topZone) {
+      var currentScrollFraction = (currentScrollTop - topZone) / endZone;
+      var $safImgs = $('.saf-img');
+      var safImgIndex = Math.min(
+        safImgCount,
+        Math.round(currentScrollFraction * safImgCount)
+      );
 
-    $safImgs.eq(safImgIndex).css('z-index', zIndex);
+      zIndex++;
 
-    $safHelper.addClass('start-0');
+      $safImgs.eq(safImgIndex).css('z-index', zIndex);
 
-    if (safImgIndex >= safImgCount) {
-      $safHelper.addClass('bottom-0 position-absolute').removeClass('position-fixed top-0');
+      $safHelper.addClass('start-0');
+
+      if (safImgIndex >= safImgCount) {
+        $safHelper.addClass('bottom-0 position-absolute top-auto').removeClass('position-fixed top-0');
+      } else {
+        $safHelper.addClass('position-fixed top-0').removeClass('bottom-0 position-absolute top-auto');
+      }
     } else {
-      $safHelper.addClass('position-fixed top-0').removeClass('bottom-0 position-absolute');
+      $safHelper.removeClass('bottom-0 position-fixed top-auto');
     }
   });
 });

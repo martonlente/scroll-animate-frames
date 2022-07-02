@@ -9,7 +9,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   left: 0;
-  position: fixed;
+  position: absolute;
+  top: 0;
   width: 100%; }
 
 .saf-img {
@@ -43,3 +44,6 @@
 
 .top-0 {
   top: 0; }
+
+.top-auto {
+  top: auto; }
