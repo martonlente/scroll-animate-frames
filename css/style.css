@@ -1,0 +1,46 @@
+/*Base
+ */
+.saf-helper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+.saf-img {
+  height: 100vh;
+  /*TODO: check
+   */
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute; }
+
+/*Utilities
+ */
+.bottom-0 {
+  bottom: 0; }
+
+.end-0 {
+  right: 0; }
+
+.position-absolute {
+  position: absolute; }
+
+.position-fixed {
+  position: fixed; }
+
+.position-relative {
+  position: relative; }
+
+.start-0 {
+  left: 0; }
+
+.top-0 {
+  top: 0; }
