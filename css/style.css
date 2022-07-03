@@ -1,6 +1,9 @@
 /*Base
  */
 .saf-helper {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,12 +17,8 @@
   width: 100%; }
 
 .saf-img {
-  height: 100vh;
-  /*TODO: check
-   */
+  max-height: 100vh;
   max-width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
   position: absolute; }
 
 /*Utilities
