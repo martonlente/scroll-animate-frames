@@ -47,6 +47,7 @@ $(function() {
       }
     } else {
       $safHelper.removeClass('bottom-0 position-fixed top-auto');
+      $safImg.css('z-index', zIndex + 1);
     }
   });
 });
