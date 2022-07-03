@@ -15,7 +15,7 @@ $(function() {
   var topZone = $safHelperPlaceholder.offset().top;
   var endZone = safHelperPlaceholderHeight - $window.height();
 
-  for (i = 1; i <= safImgCount; i++) {
+  for (i = 2; i <= safImgCount; i++) {
     $safImgActive = $clonedScrollAnimationImg.attr('src', safImgFolderPath + safImgFilename + '-' + i + '.jpg');
 
     $safHelper.append($safImgActive.clone());
