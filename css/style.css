@@ -1,5 +1,8 @@
 /*Base
  */
+.saf-helper-container {
+  position: relative; }
+
 .saf-helper-imgs {
   -webkit-box-align: center;
       -ms-flex-align: center;
