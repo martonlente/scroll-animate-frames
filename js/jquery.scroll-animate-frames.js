@@ -1,15 +1,17 @@
 (function($) {
   $.fn.saf = function(options) {
     var settings = $.extend({
+      imgCount: 25,
+      imgFilename: 'saf-img',
       speed: 2
-    });
+    }, options);
 
     var $this = this;
     var $safHelperImgs = $this.children('.saf-helper-imgs');
     var $safHelperPlaceholder = $this.children('.saf-helper-placeholder');
     var $safImg = $this.find('.saf-img');
-    var safImgCount = 150;
-    var safImgFilename = 'scroll-animate-img';
+    var safImgCount = settings.imgCount;
+    var safImgFilename = settings.imgFilename;
     var safImgFolderPath = $safImg.attr('src').split(safImgFilename)[0];
     var speedLimit = Math.min(3, settings.speed);
     var $window = $(window);
