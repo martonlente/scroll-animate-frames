@@ -21,15 +21,15 @@
 
     $safHelperPlaceholder.css('height', safHelperPlaceholderHeightCss);
 
-    var $clonedScrollAnimationImg = $safImg.clone();
-    var safHelperPlaceholderHeight = $safHelperPlaceholder.height();
-    var topZone = $safHelperPlaceholder.offset().top;
-    var endZone = safHelperPlaceholderHeight - $window.height();
+    var $clonedSafImg = $safImg.clone();
+    var safHelperPlaceholderHeightJs = $safHelperPlaceholder.height();
+    var startZone = $safHelperPlaceholder.offset().top;
+    var endZone = safHelperPlaceholderHeightJs - $window.height();
 
     $safImg.css('z-index', '1');
 
     for (i = 2; i <= safImgCount; i++) {
-      $safImgActive = $clonedScrollAnimationImg.attr('src', safImgFolderPath + safImgFilename + '-' + i + '.jpg');
+      $safImgActive = $clonedSafImg.attr('src', safImgFolderPath + safImgFilename + '-' + i + '.jpg');
 
       $safHelperImgs.append($safImgActive.clone());
     }
@@ -37,8 +37,8 @@
     $window.scroll(function() {
       var currentScrollTop = $window.scrollTop();
 
-      if ((currentScrollTop) >= topZone) {
-        var currentScrollFraction = (currentScrollTop - topZone) / endZone;
+      if ((currentScrollTop) >= startZone) {
+        var currentScrollFraction = (currentScrollTop - startZone) / endZone;
         var $safImgs = $('.saf-img');
         var safImgIndex = Math.min(
           safImgCount,
