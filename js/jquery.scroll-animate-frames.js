@@ -65,6 +65,9 @@
 
         if (safImgIndex >= safImgCount) {
           $safHelperImgs.addClass('bottom-0 position-absolute top-auto').removeClass('position-fixed top-0');
+
+          // Reset scroll animate end
+          $safImgs.last().css('z-index', zIndex + 1);
         } else {
           $safHelperImgs.addClass('position-fixed top-0').removeClass('bottom-0 position-absolute top-auto');
         }
