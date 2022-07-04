@@ -1,5 +1,5 @@
 (function($) {
-  $.fn.saf = function() {
+  $.fn.saf = function(speed) {
     var $this = this;
     var $safHelperImgs = $this.children('.saf-helper-imgs');
     var $safHelperPlaceholder = $this.children('.saf-helper-placeholder');
@@ -7,10 +7,13 @@
     var safImgCount = 150;
     var safImgFilename = 'scroll-animate-img';
     var safImgFolderPath = $safImg.attr('src').split(safImgFilename)[0];
+    var speedLimit = Math.min(3, speed);
     var $window = $(window);
     var zIndex = 0;
 
-    $safHelperPlaceholder.css('height', '500vh');
+    var safHelperPlaceholderHeightCss = (1000 / speedLimit).toString() + 'vh';
+
+    $safHelperPlaceholder.css('height', safHelperPlaceholderHeightCss);
 
     var $clonedScrollAnimationImg = $safImg.clone();
     var safHelperPlaceholderHeight = $safHelperPlaceholder.height();
