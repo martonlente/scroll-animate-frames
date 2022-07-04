@@ -1,5 +1,9 @@
 (function($) {
-  $.fn.saf = function(speed) {
+  $.fn.saf = function(options) {
+    var settings = $.extend({
+      speed: 2
+    });
+
     var $this = this;
     var $safHelperImgs = $this.children('.saf-helper-imgs');
     var $safHelperPlaceholder = $this.children('.saf-helper-placeholder');
@@ -7,7 +11,7 @@
     var safImgCount = 150;
     var safImgFilename = 'scroll-animate-img';
     var safImgFolderPath = $safImg.attr('src').split(safImgFilename)[0];
-    var speedLimit = Math.min(3, speed);
+    var speedLimit = Math.min(3, settings.speed);
     var $window = $(window);
     var zIndex = 0;
 
