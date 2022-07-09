@@ -20,13 +20,32 @@
     var zIndex = 0;
 
     // Set helper placeholder height
-    var safHelperPlaceholderHeightCss = (1000 / speedLimit).toString() + 'vh';
+    function setSafHelperPlaceholder() {
+      var safHelperPlaceholderHeightCss = (1000 / speedLimit).toString() + 'vh';
 
-    $safHelperPlaceholder.css('height', safHelperPlaceholderHeightCss);
+      $safHelperPlaceholder.css('height', safHelperPlaceholderHeightCss);
 
-    var safHelperPlaceholderHeightJs = $safHelperPlaceholder.height();
-    var startZone = $safHelperPlaceholder.offset().top;
-    var endZone = safHelperPlaceholderHeightJs - $window.height();
+      var safHelperPlaceholderHeightJs = $safHelperPlaceholder.height();
+      var startZone = $safHelperPlaceholder.offset().top;
+      var endZone = safHelperPlaceholderHeightJs - $window.height();
+
+      return {
+        'startZone': startZone,
+        'endZone': endZone
+      }
+    };
+
+    // Create object zones
+    var zones = setSafHelperPlaceholder();
+
+    setSafHelperPlaceholder();
+
+    // Reset helper placeholder height on window resize
+    $window.resize(function() {
+      setSafHelperPlaceholder();
+      zones = setSafHelperPlaceholder();
+      return zones;
+    });
 
     // Clone imgs
     var $clonedSafImg = $safImg.clone();
@@ -45,9 +64,9 @@
       var currentScrollTop = $window.scrollTop();
 
       // Start conditional scroll animate
-      if ((currentScrollTop) >= startZone) {
+      if ((currentScrollTop) >= zones.startZone) {
         // Set img index
-        var currentScrollFraction = (currentScrollTop - startZone) / endZone;
+        var currentScrollFraction = (currentScrollTop - zones.startZone) / zones.endZone;
         var $safImgs = $('.saf-img');
         var safImgIndex = Math.min(
           safImgCount,
