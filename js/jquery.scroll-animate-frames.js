@@ -28,11 +28,11 @@
     var startZone = $safHelperPlaceholder.offset().top;
     var endZone = safHelperPlaceholderHeightJs - $window.height();
 
-    // Set img z-index base
-    $safImg.css('z-index', '1');
-
     // Clone imgs
     var $clonedSafImg = $safImg.clone();
+
+    // Set img z-index base
+    $safImg.css('z-index', '1');
 
     for (i = 2; i <= safImgCount; i++) {
       $safImgActive = $clonedSafImg.attr('src', safImgFolderPath + safImgFilename + '-' + i + '.jpg');
