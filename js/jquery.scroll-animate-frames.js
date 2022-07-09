@@ -59,6 +59,27 @@
       $safHelperImgs.append($safImgActive.clone());
     }
 
+    // Check imgs loaded
+    var $safImgs = $('.saf-img');
+
+    $safImgs.each(function() {
+      var $this = $(this);
+
+      $this.on('load', function() {
+        $this.addClass('js-loaded');
+
+        var safImgCountLoaded = $('.js-loaded').length + 1;
+
+        console.log(safImgCountLoaded + ' images loaded of ' + safImgCount + ' images');
+
+        if (safImgCountLoaded == safImgCount) {
+          console.log('All images loaded')
+        } else {
+
+        }
+      });
+    });
+
     // Create scroll event and function
     $window.scroll(function() {
       var currentScrollTop = $window.scrollTop();
@@ -67,7 +88,6 @@
       if ((currentScrollTop) >= zones.startZone) {
         // Set img index
         var currentScrollFraction = (currentScrollTop - zones.startZone) / zones.endZone;
-        var $safImgs = $('.saf-img');
         var safImgIndex = Math.min(
           safImgCount,
           Math.round(currentScrollFraction * safImgCount)
