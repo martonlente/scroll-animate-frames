@@ -66,12 +66,9 @@
       var $this = $(this);
 
       $this.on('load', function() {
-
         $this.addClass('js-loaded');
 
         var safImgCountLoaded = $('.js-loaded').length + 1;
-
-        console.log(safImgCountLoaded + ' images loaded of ' + safImgCount + ' images');
 
         // Set imgs loaded
         if (safImgCountLoaded == safImgCount) {
@@ -81,14 +78,6 @@
         }
       });
     });
-
-    setInterval(function() {
-      if ($safHelperImgs.hasClass('js-loaded')) {
-        console.log('All images loaded');
-      } else {
-        console.log('Not all images loaded');
-      }
-    }, 100);
 
     // Create scroll event and function
     $window.scroll(function() {
