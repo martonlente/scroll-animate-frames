@@ -81,40 +81,45 @@
 
     // Create scroll event and function
     $window.scroll(function() {
-      var currentScrollTop = $window.scrollTop();
+      // Start conditional imgs loaded
+      if ($safHelperImgs.hasClass('js-loaded')) {
+        var currentScrollTop = $window.scrollTop();
 
-      // Start conditional scroll animate
-      if ((currentScrollTop) >= zones.startZone) {
-        // Set img index
-        var currentScrollFraction = (currentScrollTop - zones.startZone) / zones.endZone;
-        var safImgIndex = Math.min(
-          safImgCount,
-          Math.round(currentScrollFraction * safImgCount)
-        );
+        // Start conditional scroll animate
+        if ((currentScrollTop) >= zones.startZone) {
+          // Set img index
+          var currentScrollFraction = (currentScrollTop - zones.startZone) / zones.endZone;
+          var safImgIndex = Math.min(
+            safImgCount,
+            Math.round(currentScrollFraction * safImgCount)
+          );
 
-        // Increment z-index
-        zIndex++;
+          // Increment z-index
+          zIndex++;
 
-        // Select img by img index and set z-index
-        $safImgs.eq(safImgIndex).css('z-index', zIndex);
+          // Select img by img index and set z-index
+          $safImgs.eq(safImgIndex).css('z-index', zIndex);
 
-        // Set helper imgs position
-        $safHelperImgs.addClass('start-0');
+          // Set helper imgs position
+          $safHelperImgs.addClass('start-0');
 
-        if (safImgIndex >= safImgCount) {
-          $safHelperImgs.addClass('bottom-0 position-absolute top-auto').removeClass('position-fixed top-0');
+          if (safImgIndex >= safImgCount) {
+            $safHelperImgs.addClass('bottom-0 position-absolute top-auto').removeClass('position-fixed top-0');
 
-          // Reset scroll animate end
-          $safImgs.last().css('z-index', zIndex + 1);
+            // Reset scroll animate end
+            $safImgs.last().css('z-index', zIndex + 1);
+          } else {
+            $safHelperImgs.addClass('position-fixed top-0').removeClass('bottom-0 position-absolute top-auto');
+          }
+        // End conditional scroll animate start zone
         } else {
-          $safHelperImgs.addClass('position-fixed top-0').removeClass('bottom-0 position-absolute top-auto');
-        }
-      // End conditional scroll animate start zone
-      } else {
-        $safHelperImgs.removeClass('bottom-0 position-fixed top-auto');
+          $safHelperImgs.removeClass('bottom-0 position-fixed top-auto');
 
-        // Reset scroll animate start
-        $safImg.css('z-index', zIndex + 1);
+          // Reset scroll animate start
+          $safImg.css('z-index', zIndex + 1);
+        }
+      } else {
+
       }
     });
   };
