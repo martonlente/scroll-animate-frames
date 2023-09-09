@@ -6,7 +6,7 @@ Scroll animate frames currently plays in full screen, where the HTML snippet is 
 The plugin detects images' loading by default, and only starts playing if all images are loaded. Scroll animate frames supports all devices and screen sizes, and also handles window resize events.
 
 ## Version
-0.1.0
+0.1.1
 
 
 ## Installation
