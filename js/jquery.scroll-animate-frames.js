@@ -4,6 +4,7 @@
  * Licensed under Apache 2.0 (https://github.com/martonlente/scroll-animate-frames/blob/main/LICENSE)
  */
 
+// TODO: refactor js with functions named
 (function($) {
   $.fn.saf = function(options) {
     // Set options defaults
@@ -53,7 +54,7 @@
     // Create variable $clonedSafImg
     var $clonedSafImg = $safImg.clone();
 
-    // Set img z-index base
+    // Init img z-index
     $safImg.css('z-index', '1');
 
     // Clone imgs
@@ -63,7 +64,7 @@
       $safHelperImgs.append($safImgActive.clone());
     }
 
-    // Check if imgs are loaded
+    // Create variable $safImgs after imgs have been cloned
     var $safImgs = $('.saf-img');
 
     $safImgs.each(function() {
@@ -74,8 +75,9 @@
 
         var safImgCountLoaded = $('.js-is-loaded').length + 1;
 
-        // Set imgs loaded
+        // Check if imgs are loaded
         if (safImgCountLoaded == safImgCount) {
+          // Set imgs loaded
           $safHelperImgs.addClass('js-is-loaded');
         }
       });
