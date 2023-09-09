@@ -44,43 +44,39 @@
     // Create object zones
     var zones = setSafHelperPlaceholder();
 
-    setSafHelperPlaceholder();
-
     // Reset helper placeholder height on window resize
     $window.resize(function() {
-      setSafHelperPlaceholder();
       zones = setSafHelperPlaceholder();
       return zones;
     });
 
-    // Clone imgs
+    // Create variable $clonedSafImg
     var $clonedSafImg = $safImg.clone();
 
     // Set img z-index base
     $safImg.css('z-index', '1');
 
+    // Clone imgs
     for (i = 2; i <= safImgCount; i++) {
       $safImgActive = $clonedSafImg.attr('src', safImgFolderPath + safImgFilename + '-' + i + '.jpg');
 
       $safHelperImgs.append($safImgActive.clone());
     }
 
-    // Check imgs loaded
+    // Check if imgs are loaded
     var $safImgs = $('.saf-img');
 
     $safImgs.each(function() {
       var $this = $(this);
 
       $this.on('load', function() {
-        $this.addClass('js-loaded');
+        $this.addClass('js-is-loaded');
 
-        var safImgCountLoaded = $('.js-loaded').length + 1;
+        var safImgCountLoaded = $('.js-is-loaded').length + 1;
 
         // Set imgs loaded
         if (safImgCountLoaded == safImgCount) {
-          $safHelperImgs.addClass('js-loaded');
-        } else {
-
+          $safHelperImgs.addClass('js-is-loaded');
         }
       });
     });
@@ -88,13 +84,15 @@
     // Create scroll event and function
     $window.scroll(function() {
       // Start conditional imgs loaded
-      if ($safHelperImgs.hasClass('js-loaded')) {
+      if ($safHelperImgs.hasClass('js-is-loaded')) {
+        // Create variable currentScrollTop
         var currentScrollTop = $window.scrollTop();
 
-        // Start conditional scroll animate
+        // Check if current scroll top is equal or larger than start zone
         if ((currentScrollTop) >= zones.startZone) {
-          // Set img index
+          // If currrent scroll top is larger than start zone, set img index
           var currentScrollFraction = (currentScrollTop - zones.startZone) / zones.endZone;
+          // Create variable safImgIndex as full number
           var safImgIndex = Math.min(
             safImgCount,
             Math.round(currentScrollFraction * safImgCount)
@@ -109,6 +107,7 @@
           // Set helper imgs position
           $safHelperImgs.addClass('start-0');
 
+          // Check if saf img index is equal or larger than saf img count
           if (safImgIndex >= safImgCount) {
             $safHelperImgs.addClass('bottom-0 position-absolute top-auto').removeClass('position-fixed top-0');
 
@@ -124,8 +123,6 @@
           // Reset scroll animate start
           $safImg.css('z-index', zIndex + 1);
         }
-      } else {
-
       }
     });
   };
