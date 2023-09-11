@@ -1,5 +1,5 @@
 /*!
- * Scroll animate frames v0.1.1 (https://martonlente.com/)
+ * Scroll animate frames v0.1.2 (https://martonlente.com/)
  * Copyright 2022 Márton Lente
  * Licensed under Apache 2.0 (https://github.com/martonlente/scroll-animate-frames/blob/main/LICENSE)
  */
