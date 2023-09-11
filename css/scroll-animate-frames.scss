@@ -4,8 +4,6 @@
  * Licensed under Apache 2.0 (https://github.com/martonlente/scroll-animate-frames/blob/main/LICENSE)
  */
 
-/*Base
- */
 .saf {
   position: relative;
 }
@@ -25,34 +23,4 @@
   max-height: 100vh;
   max-width: 100%;
   position: absolute;
-}
-
-/*Utilities
- */
-.bottom-0 {
-  bottom: 0;
-}
-
-.end-0 {
-  right: 0;
-}
-
-.position-absolute {
-  position: absolute;
-}
-
-.position-fixed {
-  position: fixed;
-}
-
-.start-0 {
-  left: 0;
-}
-
-.top-0 {
-  top: 0;
-}
-
-.top-auto {
-  top: auto;
 }
