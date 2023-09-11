@@ -15,7 +15,7 @@ Install [jQuery](https://github.com/jquery/jquery) with one of the several optio
 Include Scroll animate frames’ CSS and JS. Place the `<link>` tag in the `<head>` for CSS, and the `<script>` tag for JavaScript after jQuery, and before the closing `</body>`.
 
 ```html
-<link href="css/style.css" rel="stylesheet">
+<link href="css/scroll-animate-frames.css" rel="stylesheet">
 ```
 
 ```html
